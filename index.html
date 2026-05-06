@@ -795,10 +795,11 @@ input, select, textarea { font-family: inherit; color: inherit; }
   background: var(--surface);
   border: 1px solid var(--border-2);
   border-radius: var(--r-xl);
-  padding: 50px 44px;
+  padding: 64px 44px 50px;
   box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  max-width: 1080px; margin: 0 auto;
+  overflow: visible;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 .pricing-card::before {
   content: ''; position: absolute; inset: 0;
@@ -808,14 +809,10 @@ input, select, textarea { font-family: inherit; color: inherit; }
   pointer-events: none;
 }
 .pricing-card .top-tag {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 28px;
-  left: auto;
-  top: auto;
-  transform: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: var(--text);
   color: var(--bg);
   padding: 8px 18px;
@@ -826,6 +823,7 @@ input, select, textarea { font-family: inherit; color: inherit; }
   border-radius: var(--r-pill);
   font-weight: 600;
   white-space: nowrap;
+  z-index: 5;
 }
 .pricing-card .corner-mark {
   position: absolute; top: 26px; right: 26px;
@@ -843,7 +841,7 @@ input, select, textarea { font-family: inherit; color: inherit; }
 .pricing-grid {
   display: grid; grid-template-columns: 1.4fr 1fr; gap: 50px;
   position: relative; z-index: 1;
-  margin-top: 14px;
+  margin-top: 0;
 }
 @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; gap: 36px; } }
 

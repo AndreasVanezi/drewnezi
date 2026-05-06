@@ -328,11 +328,6 @@ body.js-ready .reveal.in {
   transition-delay: 0s !important;
 }
 
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
-.reveal-d4 { transition-delay: 0.32s; }
-.reveal-d5 { transition-delay: 0.4s; }
 .btn {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 14px 26px;
@@ -2337,14 +2332,26 @@ const CONFIG = {
 })();
 
 /* Mobile menu */
+/* Mobile menu */
 (function mobileMenu() {
   const menu = document.getElementById('mobileMenu');
-  const open = document.getElementById('menuBtn');
-  const close = document.getElementById('closeMenuBtn');
+  const openBtn = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('closeMenuBtn');
   const links = document.querySelectorAll('[data-mobile]');
-  open && open.addEventListener('click', () => menu.classList.add('open'));
-  close.addEventListener('click', () => menu.classList.remove('open'));
-  links.forEach((l) => l.addEventListener('click', () => menu.classList.remove('open')));
+
+  if (!menu) return;
+
+  if (openBtn) {
+    openBtn.addEventListener('click', () => menu.classList.add('open'));
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => menu.classList.remove('open'));
+  }
+
+  links.forEach((link) => {
+    link.addEventListener('click', () => menu.classList.remove('open'));
+  });
 })();
 
 /* Hero glow */
@@ -2407,7 +2414,7 @@ const CONFIG = {
   const compare = document.getElementById('compare');
   const before  = document.getElementById('beforeImg');
   const handle  = document.getElementById('compareHandle');
-  if (!compare) return;
+   if (!compare || !before || !handle) return;
 
   let dragging = false;
   function setPos(p) {
@@ -2458,18 +2465,44 @@ const CONFIG = {
 })();
 
 /* Video modal */
+/* Video modal */
 (function videoModal() {
   const modal = document.getElementById('videoModal');
-  const watchBtnHero  = document.getElementById('watchBtnHero');
+  const watchBtnHero = document.getElementById('watchBtnHero');
   const watchBtnFrame = document.getElementById('watchBtnFrame');
-  const closeBtn      = document.getElementById('modalCloseBtn');
-  function open()  { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function close() { modal.classList.remove('open'); document.body.style.overflow = ''; }
-  watchBtnHero  && watchBtnHero.addEventListener('click', open);
-  watchBtnFrame && watchBtnFrame.addEventListener('click', open);
-  closeBtn.addEventListener('click', close);
-  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  const closeBtn = document.getElementById('modalCloseBtn');
+
+  if (!modal) return;
+
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (watchBtnHero) {
+    watchBtnHero.addEventListener('click', openModal);
+  }
+
+  if (watchBtnFrame) {
+    watchBtnFrame.addEventListener('click', openModal);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
 })();
 
 /* Radio chips */

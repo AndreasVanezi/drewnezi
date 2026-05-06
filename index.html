@@ -2694,4 +2694,20 @@ const CONFIG = {
 </script>
 
 </body>
+/* Package selection */
+(function packageSelection() {
+  const packageButtons = document.querySelectorAll('.package-option');
+  const budgetSelect = document.getElementById('fBudget');
+
+  packageButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      packageButtons.forEach((b) => b.classList.remove('selected'));
+      button.classList.add('selected');
+
+      if (budgetSelect) {
+        budgetSelect.value = button.dataset.package;
+      }
+    });
+  });
+})();
 </html>

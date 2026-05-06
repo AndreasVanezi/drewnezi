@@ -875,6 +875,83 @@ input, select, textarea { font-family: inherit; color: inherit; }
   padding: 28px 26px;
   text-align: center;
 }
+.package-options {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.package-option {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px 16px;
+  text-align: left;
+  transition: 0.25s ease;
+}
+
+.package-option:hover {
+  border-color: var(--text);
+  transform: translateY(-2px);
+}
+
+.package-option.featured {
+  border-color: var(--text);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.05);
+}
+
+.package-badge {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 4px 9px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.package-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.package-old {
+  display: inline-block;
+  margin-top: 6px;
+  margin-right: 8px;
+  color: var(--text-3);
+  text-decoration: line-through;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.package-price {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+.package-sub {
+  margin-top: 6px;
+  color: var(--text-3);
+  font-size: 12px;
+  line-height: 1.4;
+}
 .label-small {
   font-family: var(--font-mono); font-size: 11px;
   letter-spacing: 0.2em; text-transform: uppercase;
@@ -1733,7 +1810,7 @@ input, select, textarea { font-family: inherit; color: inherit; }
       <div class="pricing-grid">
         <div>
           <h3 class="pricing-name">The <em>Method</em></h3>
-          <p class="pricing-tagline">12 weeks of complete transformation.</p>
+          <p class="pricing-tagline">Choose the coaching package that fits your goal.</p>
 
           <ul class="pricing-list">
             <li>
@@ -1764,11 +1841,33 @@ input, select, textarea { font-family: inherit; color: inherit; }
         </div>
 
         <div class="pricing-side">
-          <div class="label-small">Total Investment</div>
-          <div class="crossed">€750</div>
-          <div class="price">€500</div>
-          <div class="price-sub">Full 3-month program · payment plans available</div>
-          <a href="#apply" class="btn" data-hover style="width:100%; justify-content:center;">
+<div class="label-small">Choose Your Package</div>
+
+<div class="package-options">
+  <div class="package-option">
+    <div class="package-name">1 Month</div>
+    <div class="package-price">€150</div>
+    <div class="package-sub">Starter coaching</div>
+  </div>
+
+  <div class="package-option featured">
+    <div class="package-badge">Most Popular</div>
+    <div class="package-name">3 Months</div>
+    <div class="package-old">€450</div>
+    <div class="package-price">€400</div>
+    <div class="package-sub">Full transformation</div>
+  </div>
+
+  <div class="package-option">
+    <div class="package-badge">Best Value</div>
+    <div class="package-name">6 Months</div>
+    <div class="package-old">€900</div>
+    <div class="package-price">€600</div>
+    <div class="package-sub">Long-term elite coaching</div>
+  </div>
+</div>
+
+<a href="#apply" class="btn" data-hover style="width:100%; justify-content:center; margin-top:22px;">
             Apply Now
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
               <path d="M5 12h14M13 5l7 7-7 7"/>
@@ -1826,14 +1925,13 @@ input, select, textarea { font-family: inherit; color: inherit; }
 
       <div class="faq-item">
         <div class="faq-q">
-          <span>Why €500? Is that all-in?</span>
+          <span>Which coaching package should I choose?</span>
           <span class="toggle">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </span>
         </div>
         <div class="faq-a">
-          <p>Yes — €500 covers the <strong>full 3-month program</strong>. Weekly 1-on-1 calls, custom training, custom nutrition, daily DM access. <em>That's the cheapest decade of your life,</em> not three months of generic templates.</p>
-        </div>
+<p>You can start with <strong>1 month for €150</strong>, commit to <strong>3 months for €400 instead of €450</strong>, or go all-in with <strong>6 months for €600 instead of €900</strong>. The 1-month option is best if you want to test the system. The 3-month option is the best starting point for a real transformation. The 6-month option is the best value if you want long-term coaching and serious results.</p>        </div>
       </div>
 
       <div class="faq-item">
@@ -1943,13 +2041,14 @@ input, select, textarea { font-family: inherit; color: inherit; }
               </select>
             </div>
             <div class="field">
-              <label for="fBudget">Are you ready to invest €500 for the 3-month program?</label>
+              <label for="fBudget">Which coaching package are you interested in?</label>
               <select id="fBudget" required>
                 <option value="">Select…</option>
-                <option>Yes — ready to start now</option>
-                <option>Yes — within 30 days</option>
-                <option>Need a payment plan</option>
-                <option>Not yet — saving up</option>
+<option>1 month — €150</option>
+<option>3 months — €400 instead of €450</option>
+<option>6 months — €600 instead of €900</option>
+<option>Need a payment plan</option>
+<option>Not yet — saving up</option>
               </select>
             </div>
             <div class="field">

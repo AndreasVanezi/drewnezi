@@ -1578,7 +1578,7 @@ input, select, textarea { font-family: inherit; color: inherit; }
         <img class="after-img" src="images/after.jpg" alt="After">
         <img class="before-img" id="beforeImg" src="images/before.jpeg" alt="Before">
         <span class="label before">Before</span>
-        <span class="label after">After / 16 wks</span>
+        <span class="label after">After / 4 weeks</span>
         <div class="handle" id="compareHandle"></div>
       </div>
       <p class="compare-hint">↔ drag me ↔</p>
@@ -2098,15 +2098,7 @@ input, select, textarea { font-family: inherit; color: inherit; }
   </div>
 </div>
 
-<div class="proof-toast" id="proofToast">
-  <span class="led"></span>
-  <div class="text">
-    <strong id="toastName">James from London</strong>
-    <span id="toastAction">just applied for coaching</span>
-    <small id="toastTime">2 min ago</small>
-  </div>
-  <span class="close" id="toastClose">×</span>
-</div>
+
 
 <script>
 /* ============================================================
@@ -2567,38 +2559,8 @@ const CONFIG = {
   });
 })();
 
-/* Social proof toast */
-(function proofToast() {
-  const toast    = document.getElementById('proofToast');
-  const nameEl   = document.getElementById('toastName');
-  const actionEl = document.getElementById('toastAction');
-  const timeEl   = document.getElementById('toastTime');
-  const close    = document.getElementById('toastClose');
 
-  const proofs = [
-    { name: 'James from London',  action: 'just applied for coaching',     time: '2 min ago' },
-    { name: 'Marcus from Berlin', action: 'just booked a strategy call',   time: '11 min ago' },
-    { name: 'Sam from Dubai',     action: 'gained +7 kg in 12 weeks',      time: '34 min ago' },
-    { name: 'Tom from NYC',       action: 'just applied for coaching',     time: '1 hr ago' },
-    { name: 'Carlos from Madrid', action: 'just joined the program',       time: '1 hr ago' },
-    { name: 'Alex from Sydney',   action: 'lost 4 kg this month',          time: '2 hr ago' },
-  ];
 
-  let i = 0; let dismissed = false;
-  function show() {
-    if (dismissed) return;
-    const p = proofs[i % proofs.length];
-    nameEl.textContent   = p.name;
-    actionEl.textContent = p.action;
-    timeEl.textContent   = p.time;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 5200);
-    i++;
-  }
-  setTimeout(show, 4500);
-  setInterval(show, 14000);
-  close.addEventListener('click', () => { dismissed = true; toast.classList.remove('show'); });
-})();
 </script>
 
 </body>

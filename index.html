@@ -808,11 +808,21 @@ input, select, textarea { font-family: inherit; color: inherit; }
   pointer-events: none;
 }
 .pricing-card .top-tag {
-  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
-  background: var(--text); color: var(--bg);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  left: auto;
+  top: auto;
+  transform: none;
+  background: var(--text);
+  color: var(--bg);
   padding: 8px 18px;
-  font-family: var(--font-mono); font-size: 11px;
-  letter-spacing: 0.2em; text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   border-radius: var(--r-pill);
   font-weight: 600;
   white-space: nowrap;

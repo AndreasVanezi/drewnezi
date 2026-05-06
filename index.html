@@ -107,7 +107,7 @@ input, select, textarea { font-family: inherit; color: inherit; }
   width: 34px; height: 34px;
   border: 1.5px solid rgba(255,255,255,0.55);
   border-radius: 50%;
-  backdrop-filter: blur(2px);
+  backdrop-filter: none;
 }
 .cursor-ring.hovering {
   width: 60px; height: 60px;
@@ -2161,8 +2161,8 @@ const CONFIG = {
     dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
   });
   function animate() {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
+    rx += (mx - rx) * 0.45;
+    ry += (my - ry) * 0.45;
     ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
     requestAnimationFrame(animate);
   }

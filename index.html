@@ -2126,8 +2126,9 @@ input, select, textarea { font-family: inherit; color: inherit; }
           </div>
           <h3>Application <em>Received.</em></h3>
           <p>
-            I personally read every application. If we're a fit, you'll get a calendar link in your inbox within <strong>48 hours</strong>. Check your spam folder just in case.
-          </p>
+  Your application has been submitted successfully. I personally read every application.
+  If we're a fit, you'll get a reply within <strong>48 hours</strong>. Check your spam folder just in case.
+</p>
           <div class="success-actions">
             <button type="button" class="btn ghost" id="copyAppBtn">📋 Copy My Application</button>
             <a href="#" class="btn ghost" id="emailDrewBtn">📧 Email Drew Directly</a>
@@ -2654,17 +2655,30 @@ const CONFIG = {
       });
     };
 
-    formContent.style.display = 'none';
-    successContent.style.display = 'block';
-    successContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+formContent.style.display = 'none';
+successContent.style.display = 'block';
+successContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    if (!sent) {
-      // Fallback: open user's email client pre-filled so the application still reaches Drew
-      setTimeout(() => {
-        window.location.href = `mailto:${CONFIG.CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      }, 1200);
-    }
-  });
+const successTitle = successContent.querySelector('h3');
+const successText = successContent.querySelector('p');
+
+if (sent) {
+  successTitle.innerHTML = 'Application <em>Sent.</em>';
+  successText.innerHTML = `
+    Your application has been submitted successfully. I personally read every application.
+    If we're a fit, you'll get a reply within <strong>48 hours</strong>. Check your spam folder just in case.
+  `;
+} else {
+  successTitle.innerHTML = 'Almost <em>Done.</em>';
+  successText.innerHTML = `
+    Your application was saved, but the automatic email did not send. Your email app will open now with the application already filled in.
+    Press <strong>Send</strong> there to complete your application.
+  `;
+
+  setTimeout(() => {
+    window.location.href = `mailto:${CONFIG.CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }, 1600);
+}
 
   // Set "email Drew" links throughout the site
   function setMailto(el) {
